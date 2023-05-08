@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="85b16b26-22ae-4a02-9415-4d6988c6e430" name="DDL Funds Mapping">
+      <data-sources db="949b61fc-a9cc-40be-9cf4-15a8d4de2d2e" ddl="9e5fd7f9-ebaa-495f-ab91-c1df0bd507a0" />
+    </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="49fe8252-7321-4cb1-9da3-d59c74e8acc0" />
+          <option name="name" value="Treasure" />
+          <option name="dbmsName" value="H2" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/src/main/resources/schema.sql" />
+            </array>
+          </option>
+          <option name="outLayout" value="File per object by schema.groovy" />
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
