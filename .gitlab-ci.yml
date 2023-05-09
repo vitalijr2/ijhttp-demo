@@ -1,0 +1,42 @@
+variables:
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dmaven.compiler.showWarnings=false -Dmaven.compiler.debug=false -Dorg.slf4j.simpleLogger.showDateTime=true -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss:SSS"
+
+image: maven:3-openjdk-17
+
+include:
+  - template: Security/SAST.gitlab-ci.yml
+
+cache:
+  paths:
+    - .m2/repository
+    - target
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  script:
+    - mvn $MAVEN_CLI_OPTS clean compile
+
+http-test:
+  stage: test
+  script:
+    - microdnf install unzip
+    - curl -f -s -L -o ijhttp.zip https://jb.gg/ijhttp/latest
+    - unzip -nq ijhttp.zip -d target
+    - rm ijhttp.zip
+    - mvn $MAVEN_CLI_OPTS verify -Pspring-boot,maven-plugin
+  artifacts:
+    reports:
+      junit:
+        - reports/report.xml
+
+sast:
+  stage: test
+
+spotbugs-sast:
+  variables:
+    MAVEN_REPO_PATH: '.m2/repository'
+    SAST_JAVA_VERSION: 17
