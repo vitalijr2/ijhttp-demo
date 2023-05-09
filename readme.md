@@ -39,6 +39,32 @@ http-test:
 Example:
 ![GitLab Pipeline](gitlab-ci.png)
 
+## Using with GitHub CI
+
+There is `.github/workflows/maven.yml` who downloads and unpacks `ijhttp` them runs it.
+
+```yaml
+steps:
+- uses: actions/checkout@v3
+- name: Download ijhttp
+  run: curl -f -s -L -o ijhttp.zip https://jb.gg/ijhttp/latest
+- name: Unpack ijhttp
+  run: unzip -nq ijhttp.zip -d target
+- name: Remove ijhttp.zip
+  run: rm ijhttp.zip
+- name: Set up JDK 17
+  uses: actions/setup-java@v3
+  with:
+    java-version: '17'
+    distribution: 'temurin'
+    cache: maven
+- name: Build with Maven
+  run: mvn verify -ntp -Pspring-boot,maven-plugin
+```
+
+Example:
+![GitLab Workflow](github-workglow.png)
+
 [ijhttp]: https://www.jetbrains.com/help/idea/http-client-cli.html "HTTP Client CLI"
 
 [http-client]: https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html "HTTP Client"
