@@ -92,7 +92,7 @@
               <outputDirectory>${project.build.directory}</outputDirectory>
               <unpack>true</unpack>
               <url>
-                https://download-cdn.jetbrains.com/resources/intellij/http-client/231.8770.17/intellij-http-client.zip
+                https://download-cdn.jetbrains.com/resources/intellij/http-client/231.9011.34/intellij-http-client.zip
               </url>
             </configuration>
             <executions>
