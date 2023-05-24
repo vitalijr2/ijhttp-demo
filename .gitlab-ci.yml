@@ -38,9 +38,8 @@ http-test-on-docker-image:
     name: jetbrains/intellij-http-client:latest
     entrypoint: [""]
   stage: test
-  before_script:
-    - java -jar /workdir/target/ijhttp-demo-1.0.0-SNAPSHOT.jar &
   script:
+    - java -jar target/ijhttp-demo-1.0.0-SNAPSHOT.jar &
     - ls -lh
     - while ! nc -z localhost 8080 </dev/null; do sleep 5; done
     - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --report funds.http
