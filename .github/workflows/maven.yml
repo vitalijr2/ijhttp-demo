@@ -35,7 +35,14 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: ./mvnw verify -ntp -Pspring-boot,maven-plugin
-    - uses: actions/upload-artifact@master
+    - name: Temporarily save test requests
+      uses: actions/upload-artifact@master
+      with:
+        name: tests
+        path: funds.http
+        retention-days: 1
+    - name: Temporarily save target
+      uses: actions/upload-artifact@master
       with:
         name: target
         path: target
@@ -49,7 +56,13 @@ jobs:
       image: jetbrains/intellij-http-client:latest
 
     steps:
-      - uses: actions/download-artifact@master
+      - name: Retrieve saved test requests
+        uses: actions/download-artifact@master
+        with:
+          name: tests
+          path: .
+      - name: Retrieve saved target
+        uses: actions/download-artifact@master
         with:
           name: target
           path: target
