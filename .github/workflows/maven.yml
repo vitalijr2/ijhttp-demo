@@ -10,9 +10,9 @@ name: IntelliJ HTTP Client with GitHub Workflow
 
 on:
   push:
-    branches: [ "main", "github-workflow" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main", "github-workflow" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -35,3 +35,17 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn verify -ntp -Pspring-boot,maven-plugin
+
+  integration-test:
+
+    runs-on: ubuntu-latest
+    needs: build
+    container: jetbrains/intellij-http-client:latest
+
+    steps:
+      - name: Run the application
+        run: java -jar target/ijhttp-demo-1.0.0-SNAPSHOT.jar &
+      - name: Wait the application
+        run: while ! nc -z localhost 8080 </dev/null; do sleep 5; done
+      - name: Run tests
+        run: java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --report funds.http
