@@ -40,7 +40,7 @@ http-test-on-docker-image:
   stage: test
   script:
     - java -jar target/ijhttp-demo-1.0.0-SNAPSHOT.jar &
-    - while ! timeout 1 bash -c "echo > /dev/tcp/localhost/8080"; do sleep 5; done
+    - while ! timeout 1 sh -c "echo > /dev/tcp/localhost/8080"; do sleep 5; done
     - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --report funds.http
   artifacts:
     reports:
