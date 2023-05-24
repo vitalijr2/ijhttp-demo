@@ -43,6 +43,7 @@ jobs:
       image: jetbrains/intellij-http-client:latest
 
     steps:
+      - uses: actions/checkout@v3
       - name: Package
         run: ./mvnw -DskipTests package
       - name: Run the application
