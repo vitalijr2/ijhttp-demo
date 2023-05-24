@@ -40,7 +40,7 @@ http-test-on-docker-image:
   stage: test
   script:
     - java -jar target/ijhttp-demo-1.0.0-SNAPSHOT.jar &
-    - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --docker-mode --report funds.http
+    - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain -D --report funds.http
   artifacts:
     reports:
       junit:
