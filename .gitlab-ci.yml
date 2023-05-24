@@ -14,6 +14,8 @@ cache:
 stages:
   - build
   - test
+  - package
+  - integration-test
 
 build:
   stage: build
@@ -33,15 +35,20 @@ http-test:
       junit:
         - reports/report.xml
 
+package:
+  stage: package
+  script:
+    - ./mvnw $MAVEN_CLI_OPTS -DskipTests package
+
 http-test-on-docker-image:
   image:
     name: jetbrains/intellij-http-client:latest
     entrypoint: [""]
-  stage: test
-  script:
-    - ./mvnw $MAVEN_CLI_OPTS -DskipTests package
+  stage: integration-test
+  before_script:
     - java -jar target/ijhttp-demo-1.0.0-SNAPSHOT.jar &
     - while ! nc -z localhost 8080 </dev/null; do sleep 5; done
+  script:
     - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --report funds.http
   artifacts:
     reports:
