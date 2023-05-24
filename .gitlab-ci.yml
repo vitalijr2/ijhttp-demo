@@ -18,7 +18,7 @@ stages:
 build:
   stage: build
   script:
-    - mvn $MAVEN_CLI_OPTS clean compile
+    - ./mvnw $MAVEN_CLI_OPTS clean compile
 
 http-test:
   stage: test
@@ -27,7 +27,18 @@ http-test:
     - curl -f -s -L -o ijhttp.zip https://jb.gg/ijhttp/latest
     - unzip -nq ijhttp.zip -d target
     - rm ijhttp.zip
-    - mvn $MAVEN_CLI_OPTS verify -Pspring-boot,maven-plugin
+    - ./mvnw $MAVEN_CLI_OPTS verify -Pspring-boot,maven-plugin
+  artifacts:
+    reports:
+      junit:
+        - reports/report.xml
+
+http-test-on-docker-image:
+  image: jetbrains/intellij-http-client:latest
+  stage: test
+  script:
+    - java -jar target/ijhttp-demo-1.0.0-SNAPSHOT.jar &
+    - ijhttp --report funds.http
   artifacts:
     reports:
       junit:

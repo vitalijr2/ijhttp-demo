@@ -70,6 +70,7 @@
       <artifactId>h2</artifactId>
       <groupId>com.h2database</groupId>
       <scope>runtime</scope>
+      <version>2.1.214</version>
     </dependency>
   </dependencies>
   <groupId>io.gitlab.r2</groupId>
@@ -92,7 +93,7 @@
               <outputDirectory>${project.build.directory}</outputDirectory>
               <unpack>true</unpack>
               <url>
-                https://download-cdn.jetbrains.com/resources/intellij/http-client/231.9011.34/intellij-http-client.zip
+                https://download-cdn.jetbrains.com/resources/intellij/http-client/${ijhttp.version}/intellij-http-client.zip
               </url>
             </configuration>
             <executions>
@@ -198,6 +199,7 @@
     </profile>
   </profiles>
   <properties>
+    <ijhttp.version>231.9011.34</ijhttp.version>
     <java.version>17</java.version>
     <maven-minimal.version>3.8.5</maven-minimal.version>
   </properties>
