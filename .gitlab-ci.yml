@@ -39,8 +39,8 @@ http-test-on-docker-image:
     entrypoint: [""]
   stage: test
   script:
+    - ./mvnw $MAVEN_CLI_OPTS -DskipTests package
     - java -jar target/ijhttp-demo-1.0.0-SNAPSHOT.jar &
-    - ls -lh target
     - while ! nc -z localhost 8080 </dev/null; do sleep 5; done
     - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --report funds.http
   artifacts:
