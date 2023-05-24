@@ -37,8 +37,9 @@ jobs:
       run: ./mvnw verify -ntp -Pspring-boot,maven-plugin
     - uses: actions/upload-artifact@master
       with:
-        name: ijhttp-demo-jar
-        path: target/ijhttp-demo-1.0.0-SNAPSHOT.jar
+        name: target
+        path: target
+        retention-days: 1
 
   integration-test:
 
@@ -50,8 +51,8 @@ jobs:
     steps:
       - uses: actions/download-artifact@master
         with:
-          name: ijhttp-demo-jar
-          path: target/ijhttp-demo-1.0.0-SNAPSHOT.jar
+          name: target
+          path: target
       - name: Run the application
         run: java -jar target/ijhttp-demo-1.0.0-SNAPSHOT.jar &
       - name: Wait the application
