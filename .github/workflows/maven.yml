@@ -10,9 +10,9 @@ name: IntelliJ HTTP Client with GitHub Workflow
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "docker-image" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "docker-image" ]
 
 jobs:
   build:
