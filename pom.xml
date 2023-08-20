@@ -153,6 +153,8 @@
                 <file>funds.http</file>
               </files>
               <report>true</report>
+              <logLevel>HEADERS</logLevel>
+              <useMavenLogger>true</useMavenLogger>
             </configuration>
             <executions>
               <execution>
