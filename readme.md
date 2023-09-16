@@ -1,7 +1,7 @@
 # IntelliJ HTTP Client Demo
 
 This is a demo project to show using of [IntelliJ HTTP Client][ijhttp] CLI.
-Further reading about [HTTP Client][http-client].
+Further reading about [HTTP Client][http-client] and [specification][spec].
 
 ## How to run IntelliJ HTTP Client...
 
@@ -141,3 +141,4 @@ jobs:
 
 [http-client]: https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html "HTTP Client"
 
+[spec]: https://github.com/JetBrains/http-request-in-editor-spec/blob/master/spec.md "HTTP Request in Editor Specification"
