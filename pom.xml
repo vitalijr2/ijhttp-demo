@@ -14,7 +14,7 @@
               <version>${java.version}</version>
             </requireJavaVersion>
             <requireMavenVersion>
-              <version>${maven-minimal.version}</version>
+              <version>3.8.5</version>
             </requireMavenVersion>
           </rules>
         </configuration>
@@ -34,7 +34,7 @@
           </execution>
         </executions>
         <groupId>org.apache.maven.plugins</groupId>
-        <version>3.3.0</version>
+        <version>3.4.1</version>
       </plugin>
       <plugin>
         <artifactId>spring-boot-maven-plugin</artifactId>
@@ -62,11 +62,6 @@
       <groupId>org.springframework.boot</groupId>
     </dependency>
     <dependency>
-      <!--
-        Dependency maven:com.h2database:h2:2.1.214 is vulnerable
-        CVE-2022-45868 7.8 Cleartext Storage of Sensitive Information vulnerability with medium severity found
-        CVE-2022-45868 7.8 Cleartext Storage of Sensitive Information vulnerability with medium severity found
-      -->
       <artifactId>h2</artifactId>
       <groupId>com.h2database</groupId>
       <scope>runtime</scope>
@@ -201,9 +196,8 @@
     </profile>
   </profiles>
   <properties>
-    <ijhttp.version>231.9011.34</ijhttp.version>
+    <ijhttp.version>232.9921.47</ijhttp.version>
     <java.version>17</java.version>
-    <maven-minimal.version>3.8.5</maven-minimal.version>
   </properties>
   <version>1.0.0-SNAPSHOT</version>
 </project>
