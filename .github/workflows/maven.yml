@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Download ijhttp
       run: curl -f -s -L -o ijhttp.zip https://jb.gg/ijhttp/latest
     - name: Unpack ijhttp
