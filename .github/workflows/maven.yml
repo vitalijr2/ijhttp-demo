@@ -30,7 +30,7 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Build with Maven
-        run: ./mvnw verify -ntp -Pspring-boot,maven-plugin
+        run: ./mvnw
       - name: Temporarily save test requests
         uses: actions/upload-artifact@master
         with:
