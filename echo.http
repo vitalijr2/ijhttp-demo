@@ -1,4 +1,4 @@
-### Get all funds
+### Echo test
 GET http://localhost:8080/echo
 Accept: application/json
 Public-Variable: {{public-variable}}

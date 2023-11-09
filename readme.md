@@ -53,7 +53,7 @@ http-test-on-docker-image:
     - java -jar target/ijhttp-demo-1.0.0-SNAPSHOT.jar &
     - while ! nc -z localhost 8080 </dev/null; do sleep 5; done
   script:
-    - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --report funds.http
+    - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --report echo.http
   artifacts:
     reports:
       junit:
@@ -102,7 +102,7 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: tests
-        path: funds.http
+        path: echo.http
         retention-days: 1
     - name: Temporarily save target
       uses: actions/upload-artifact@master
@@ -134,7 +134,7 @@ jobs:
       - name: Wait the application
         run: while ! nc -z localhost 8080 </dev/null; do sleep 5; done
       - name: Run tests
-        run: java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --report funds.http
+        run: java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --report echo.http
 ```
 
 [ijhttp]: https://www.jetbrains.com/help/idea/http-client-cli.html "HTTP Client CLI"
