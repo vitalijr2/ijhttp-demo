@@ -1,7 +1,8 @@
 logging:
   level:
     root: WARN
+
 spring:
-  sql:
-    init:
-      mode: always
+  jackson:
+    visibility:
+      field: any

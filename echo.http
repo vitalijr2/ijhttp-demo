@@ -1,0 +1,11 @@
+### Get all funds
+GET http://localhost:8080/echo
+Accept: application/json
+Public-Variable: {{public-variable}}
+Another-Variable: {{another-variable}}
+Third-Variable: {{third-variable}}
+Hidden-Variable: {{hidden-variable}}
+Hidden-Variable2: {{hidden-variable2}}
+Last-Variable: {{last-variable}}
+
+###
