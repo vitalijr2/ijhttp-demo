@@ -57,7 +57,7 @@ http-test-on-docker-image:
     - java -jar target/ijhttp-demo.jar &
     - while ! nc -z localhost 8080 </dev/null; do sleep 5; done
   script:
-    - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain -D --report echo.http
+    - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --report echo.http
   artifacts:
     reports:
       junit:
