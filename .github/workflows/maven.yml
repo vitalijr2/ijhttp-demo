@@ -87,7 +87,7 @@ jobs:
           name: target
           path: target
       - name: Run the application
-        run: java -jar target/ijhttp-demo-1.0.0-SNAPSHOT.jar &
+        run: java -jar target/ijhttp-demo.jar &
       - name: Wait the application
         run: while ! nc -z localhost 8080 </dev/null; do sleep 5; done
       - name: Run tests

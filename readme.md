@@ -50,7 +50,7 @@ http-test-on-docker-image:
     entrypoint: [""]
   stage: integration-test
   before_script:
-    - java -jar target/ijhttp-demo-1.0.0-SNAPSHOT.jar &
+    - java -jar target/ijhttp-demo.jar &
     - while ! nc -z localhost 8080 </dev/null; do sleep 5; done
   script:
     - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --report echo.http
@@ -130,7 +130,7 @@ jobs:
           name: target
           path: target
       - name: Run the application
-        run: java -jar target/ijhttp-demo-1.0.0-SNAPSHOT.jar &
+        run: java -jar target/ijhttp-demo.jar &
       - name: Wait the application
         run: while ! nc -z localhost 8080 </dev/null; do sleep 5; done
       - name: Run tests
