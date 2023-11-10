@@ -22,8 +22,21 @@ build:
   script:
     - ./mvnw $MAVEN_CLI_OPTS clean compile
 
-http-test:
+sast:
   stage: test
+
+spotbugs-sast:
+  variables:
+    MAVEN_REPO_PATH: '.m2/repository'
+    SAST_JAVA_VERSION: 17
+
+package:
+  stage: package
+  script:
+    - ./mvnw $MAVEN_CLI_OPTS -DskipTests package
+
+http-test-with-maven-plugin:
+  stage: integration-test
   script:
     - microdnf install unzip
     - curl -f -s -L -o ijhttp.zip https://jb.gg/ijhttp/latest
@@ -35,11 +48,6 @@ http-test:
       junit:
         - reports/report.xml
 
-package:
-  stage: package
-  script:
-    - ./mvnw $MAVEN_CLI_OPTS -DskipTests package
-
 http-test-on-docker-image:
   image:
     name: jetbrains/intellij-http-client:latest
@@ -49,16 +57,9 @@ http-test-on-docker-image:
     - java -jar target/ijhttp-demo.jar &
     - while ! nc -z localhost 8080 </dev/null; do sleep 5; done
   script:
-    - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --report echo.http
+    - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain -D --report echo.http
   artifacts:
     reports:
       junit:
         - reports/report.xml
 
-sast:
-  stage: test
-
-spotbugs-sast:
-  variables:
-    MAVEN_REPO_PATH: '.m2/repository'
-    SAST_JAVA_VERSION: 17
