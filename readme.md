@@ -137,6 +137,11 @@ jobs:
         run: java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --report echo.http
 ```
 
+## Useful links
+
+- ZIP archive https://www.jetbrains.com/ijhttp/download/#section=zip-archive
+- Docker image https://hub.docker.com/r/jetbrains/intellij-http-client
+
 [ijhttp]: https://www.jetbrains.com/help/idea/http-client-cli.html "HTTP Client CLI"
 
 [http-client]: https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html "HTTP Client"
