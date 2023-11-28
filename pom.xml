@@ -209,7 +209,7 @@
     </profile>
   </profiles>
   <properties>
-    <ijhttp.version>232.10203.10</ijhttp.version>
+    <ijhttp.version>233.11799.6</ijhttp.version>
     <java.version>17</java.version>
   </properties>
   <version>1.0.1-SNAPSHOT</version>
