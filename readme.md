@@ -13,7 +13,7 @@ I use `download-maven-plugin` to download it.
 
 #### … with Spring Boot Test
 
-Run just Maven build
+Run Maven build
 
 ```bash
 ./mvnw
