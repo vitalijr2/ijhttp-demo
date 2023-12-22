@@ -50,14 +50,14 @@ http-test-with-maven-plugin:
 
 http-test-on-docker-image:
   image:
-    name: jetbrains/intellij-http-client:latest
+    name: jetbrains/intellij-http-client:233.11799.241
     entrypoint: [""]
   stage: integration-test
   before_script:
     - java -jar target/ijhttp-demo.jar &
     - while ! nc -z localhost 8080 </dev/null; do sleep 5; done
   script:
-    - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --env=demo --env-variables "another-variable=you can see it too" -V "third-variable=you can see me too" --env-file=public-env.json --private-env-file=private-env.json "--private-env-variables=hidden-variable2=you cannot see it too" -P "last-variable=you cannot see me too" --report --log-level=VERBOSE echo.http
+    - java -cp "/intellij-http-client/*" com.intellij.httpClient.cli.HttpClientMain --env=demo --env-variables "another-variable=you can see it too" -V "third-variable=you can see me too" -V localport=8080 --env-file=public-env.json --private-env-file=private-env.json "--private-env-variables=hidden-variable2=you cannot see it too" -P "last-variable=you cannot see me too" --report --log-level=VERBOSE echo.http
   artifacts:
     reports:
       junit:

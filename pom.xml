@@ -58,6 +58,38 @@
       <groupId>org.yaml</groupId>
       <version>2.2</version>
     </dependency>
+    <dependency>
+      <!--
+        CVE-2023-6378: A serialization vulnerability in
+        logback receiver component part of logback version 1.4.11 allows an attacker
+        to mount a Denial-Of-Service attack by sending poisoned data.
+      -->
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.4.14</version>
+    </dependency>
+    <dependency>
+      <!--
+        CVE-2023-6378: A serialization vulnerability in
+        logback receiver component part of logback version 1.4.11 allows an attacker
+        to mount a Denial-Of-Service attack by sending poisoned data.
+      -->
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <version>1.4.14</version>
+    </dependency>
+    <!-- test -->
+    <dependency>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>ijhttp-spring-boot-test</artifactId>
+      <groupId>uk.bot-by.ijhttp-tools</groupId>
+      <scope>test</scope>
+      <version>1.1.1</version>
+    </dependency>
   </dependencies>
   <groupId>io.gitlab.r2</groupId>
   <modelVersion>4.0.0</modelVersion>
@@ -140,6 +172,7 @@
               <environmentVariables>
                 <environmentVariable>another-variable=you can see it too</environmentVariable>
                 <environmentVariable>third-variable=you can see me too</environmentVariable>
+                <environmentVariable>localport=8080</environmentVariable>
               </environmentVariables>
               <files>
                 <file>echo.http</file>
@@ -150,6 +183,7 @@
                 <privateEnvironmentVariable>last-variable=you cannot see me too</privateEnvironmentVariable>
               </privateEnvironmentVariables>
               <report>true</report>
+              <reportPath>target/ijhttp-reports</reportPath>
               <logLevel>VERBOSE</logLevel>
               <useMavenLogger>true</useMavenLogger>
             </configuration>
@@ -161,8 +195,8 @@
                 <id>http-test</id>
               </execution>
             </executions>
-            <groupId>uk.bot-by.maven-plugin</groupId>
-            <version>1.0.1</version>
+            <groupId>uk.bot-by.ijhttp-tools</groupId>
+            <version>${ijhttp-tools.version}</version>
           </plugin>
         </plugins>
       </build>
@@ -180,6 +214,8 @@
                 <argument>another-variable=you can see it too</argument>
                 <argument>-V</argument>
                 <argument>third-variable=you can see me too</argument>
+                <argument>-V</argument>
+                <argument>localport=8080</argument>
                 <argument>--env-file=public-env.json</argument>
                 <argument>--private-env-file=private-env.json</argument>
                 <argument>--private-env-variables=hidden-variable2=you cannot see it too</argument>
@@ -209,8 +245,9 @@
     </profile>
   </profiles>
   <properties>
-    <ijhttp.version>233.11799.6</ijhttp.version>
+    <ijhttp.version>233.11799.241</ijhttp.version>
+    <ijhttp-tools.version>1.1.1</ijhttp-tools.version>
     <java.version>17</java.version>
   </properties>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
 </project>

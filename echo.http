@@ -1,5 +1,5 @@
 ### Echo test
-GET http://localhost:8080/echo
+GET http://localhost:{{localport}}/echo
 Accept: application/json
 Public-Variable: {{public-variable}}
 Another-Variable: {{another-variable}}

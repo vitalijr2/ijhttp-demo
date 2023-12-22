@@ -1,0 +1,25 @@
+ijhttp:
+  parameters:
+    environment-file: public-env.json
+    environment-name: demo
+    environment-variables:
+      - another-variable=you can see it too
+      - third-variable=you can see me too
+    files:
+      echo.http
+    log-level: verbose
+    private-environment-file: private-env.json
+    private-environment-variables:
+      - hidden-variable2=you cannot see it too
+      - last-variable=you cannot see me too
+    report: true
+    report-path: target/ijhttp-reports
+
+logging:
+  level:
+    root: INFO
+
+spring:
+  jackson:
+    visibility:
+      field: any
