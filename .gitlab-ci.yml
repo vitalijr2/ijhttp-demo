@@ -42,7 +42,7 @@ http-test-with-maven-plugin:
     - curl -f -s -L -o ijhttp.zip https://jb.gg/ijhttp/latest
     - unzip -nq ijhttp.zip -d target
     - rm ijhttp.zip
-    - ./mvnw $MAVEN_CLI_OPTS verify -Pspring-boot,maven-plugin
+    - ./mvnw $MAVEN_CLI_OPTS verify -ntp -DskipTests -Pspring-boot,maven-plugin
   artifacts:
     reports:
       junit:

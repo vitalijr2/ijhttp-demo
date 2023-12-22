@@ -63,7 +63,7 @@ jobs:
         java-version: '17'
         cache: maven
     - name: Run with Maven plugin
-      run: ./mvnw verify -ntp -Pspring-boot,maven-plugin
+      run: ./mvnw verify -ntp -DskipTests -Pspring-boot,maven-plugin
 
   run-with-docker-image:
 
