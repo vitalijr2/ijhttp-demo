@@ -19,12 +19,16 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    container:
-      image: jetbrains/intellij-http-client:233.11799.241
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Download ijhttp
+        run: curl -f -s -L -o ijhttp.zip https://jb.gg/ijhttp/latest
+      - name: Unpack ijhttp
+        run: unzip -nq ijhttp.zip -d target
+      - name: Remove ijhttp.zip
+        run: rm ijhttp.zip
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
