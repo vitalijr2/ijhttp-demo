@@ -5,7 +5,6 @@ ijhttp:
     environment-variables:
       - another-variable=you can see it too
       - third-variable=you can see me too
-    executable: ijhttp/ijhttp
     files:
       echo.http
     log-level: verbose
