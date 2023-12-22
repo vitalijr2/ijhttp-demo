@@ -11,6 +11,17 @@ There are two options: run it with `exec-maven-plugin` and `ijhttp-maven-plugin`
 Both require to install or download **IntelliJ HTTP Client CLI**.
 I use `download-maven-plugin` to download it.
 
+#### … with Spring Boot Test
+
+Run just Maven build
+
+```bash
+./mvnw
+```
+
+You need `ijhttp` in your **PATH**. You can customize it in `src/test/resources/application.yaml`.
+
+
 #### … with `exec-maven-plugin`
 
 ```bash
