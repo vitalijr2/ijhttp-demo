@@ -246,7 +246,7 @@
   </profiles>
   <properties>
     <ijhttp.version>233.11799.241</ijhttp.version>
-    <ijhttp-tools.version>1.1.1</ijhttp-tools.version>
+    <ijhttp-tools.version>1.2.0</ijhttp-tools.version>
     <java.version>17</java.version>
   </properties>
   <version>1.0.0-SNAPSHOT</version>
