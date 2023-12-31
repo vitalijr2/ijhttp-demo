@@ -88,7 +88,7 @@
       <artifactId>ijhttp-spring-boot-test</artifactId>
       <groupId>uk.bot-by.ijhttp-tools</groupId>
       <scope>test</scope>
-      <version>1.1.1</version>
+      <version>1.2.0</version>
     </dependency>
   </dependencies>
   <groupId>io.gitlab.r2</groupId>
