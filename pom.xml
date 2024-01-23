@@ -48,36 +48,6 @@
       <artifactId>spring-boot-starter-web</artifactId>
       <groupId>org.springframework.boot</groupId>
     </dependency>
-    <dependency>
-      <!--
-        Avoid transitive vulnerable dependency maven:org.yaml:snakeyaml:1.33
-        CVE-2022-41854 6.5 Out-of-bounds Write vulnerability with medium severity found
-        CVE-2022-1471 9.8 Deserialization of Untrusted Data vulnerability with high severity found
-      -->
-      <artifactId>snakeyaml</artifactId>
-      <groupId>org.yaml</groupId>
-      <version>2.2</version>
-    </dependency>
-    <dependency>
-      <!--
-        CVE-2023-6378: A serialization vulnerability in
-        logback receiver component part of logback version 1.4.11 allows an attacker
-        to mount a Denial-Of-Service attack by sending poisoned data.
-      -->
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <version>1.4.14</version>
-    </dependency>
-    <dependency>
-      <!--
-        CVE-2023-6378: A serialization vulnerability in
-        logback receiver component part of logback version 1.4.11 allows an attacker
-        to mount a Denial-Of-Service attack by sending poisoned data.
-      -->
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-core</artifactId>
-      <version>1.4.14</version>
-    </dependency>
     <!-- test -->
     <dependency>
       <artifactId>spring-boot-starter-test</artifactId>
@@ -85,10 +55,20 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <!--
+       Fixes transitive vulnerable dependency maven:com.jayway.jsonpath:json-path:2.8.0
+         CVE-2023-51074 5.3 Out-of-bounds Write vulnerability with Medium severity found
+      -->
+      <groupId>com.jayway.jsonpath</groupId>
+      <artifactId>json-path</artifactId>
+      <version>2.9.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <artifactId>ijhttp-spring-boot-test</artifactId>
       <groupId>uk.bot-by.ijhttp-tools</groupId>
       <scope>test</scope>
-      <version>1.1.1</version>
+      <version>${ijhttp-tools.version}</version>
     </dependency>
   </dependencies>
   <groupId>io.gitlab.r2</groupId>
@@ -98,7 +78,7 @@
     <artifactId>spring-boot-starter-parent</artifactId>
     <groupId>org.springframework.boot</groupId>
     <relativePath/>
-    <version>3.2.0</version>
+    <version>3.2.2</version>
   </parent>
   <profiles>
     <profile>
@@ -174,9 +154,9 @@
                 <environmentVariable>third-variable=you can see me too</environmentVariable>
                 <environmentVariable>localport=8080</environmentVariable>
               </environmentVariables>
-              <files>
-                <file>echo.http</file>
-              </files>
+              <directories>
+                <directory>src/test/http-requests</directory>
+              </directories>
               <privateEnvironmentFile>private-env.json</privateEnvironmentFile>
               <privateEnvironmentVariables>
                 <privateEnvironmentVariable>hidden-variable2=you cannot see it too</privateEnvironmentVariable>
@@ -246,7 +226,7 @@
   </profiles>
   <properties>
     <ijhttp.version>233.11799.241</ijhttp.version>
-    <ijhttp-tools.version>1.1.1</ijhttp-tools.version>
+    <ijhttp-tools.version>1.2.0</ijhttp-tools.version>
     <java.version>17</java.version>
   </properties>
   <version>1.0.0-SNAPSHOT</version>
